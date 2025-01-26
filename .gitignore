@@ -1,0 +1,53 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Jupyter Notebook files
+*.ipynb
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.idea/
+.vscode/
+
+# Python-specific environment files
+*.env
+*.venv
+
+# PyCharm project files
+.idea/
+
+# VS Code project files
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Logs
+*.log
+
+# Test coverage reports
+coverage/
+*.coveragerc
+*.tox/
+.nox/
+
+# Distribution / packaging files
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+*.tar.gz
+
