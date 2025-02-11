@@ -1,0 +1,194 @@
+/* -----------------------------
+  COLOR & FONT VARIABLES
+----------------------------- */
+:root {
+  /* Coffee-themed color palette */
+  --primary-color: #BA7958;       /* Main branding color (warm coffee brown) */
+  --secondary-color: #875C47;     /* Secondary accent (deeper coffee) */
+  --background-color: #1E1E1E;    /* Dark background for the body */
+  --text-color: #EDE5DD;          /* Creamy text color for readability */
+  --heading-color: #F0D2B3;       /* Lighter coffee-cream color for headings */
+  --accent-color: #E07A5F;        /* Accent color for hover states and highlights */
+  --font-stack: 'Helvetica Neue', sans-serif;
+}
+
+/* -----------------------------
+  GLOBAL STYLES
+----------------------------- */
+body, .stApp {
+  font-family: var(--font-stack);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #444; /* Subtle divider for dark backgrounds */
+  margin: 2rem 0;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--accent-color);
+}
+
+/* -----------------------------
+  SECTION HEADINGS
+----------------------------- */
+section > h2,
+section > h3 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* -----------------------------
+  HERO SECTION
+----------------------------- */
+.hero-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  background-color: #2A2A2A; /* Slightly lighter than body for contrast */
+  border-bottom: 1px solid #444;
+}
+.hero-section .hero-text {
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+.hero-section .hero-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+.hero-section .hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+.hero-section .hero-image {
+  max-width: 400px;
+  width: 100%;
+}
+.hero-section img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+}
+
+/* -----------------------------
+  ABOUT SECTION
+----------------------------- */
+.about-section {
+  padding: 2rem 1rem;
+  background-color: #2F2F2F; /* Keeps it dark but distinct from hero */
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+.about-section p {
+  line-height: 1.6;
+}
+.skill-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.skill-icon {
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* -----------------------------
+  PROJECTS SECTION
+----------------------------- */
+.projects-section {
+  padding: 2rem 1rem;
+}
+.project-card {
+  background-color: #2A2A2A;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px 4px 0 0;
+}
+.project-card .project-content {
+  padding: 1rem;
+}
+.project-card .project-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--heading-color);
+}
+.project-card .project-description {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+/* -----------------------------
+  SKILLS SECTION
+----------------------------- */
+.skills-section {
+  padding: 2rem 1rem;
+}
+.skill-bar-container {
+  margin-bottom: 1rem;
+}
+/* Example: you might style the progress bars in a darker theme if needed:
+   .stProgress > div > div {
+       background-color: var(--primary-color);
+   }
+*/
+
+/* -----------------------------
+  CONTACT SECTION
+----------------------------- */
+.contact-section {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: #2F2F2F;
+  border-top: 1px solid #444;
+}
+.contact-section a {
+  color: var(--secondary-color);
+}
+.contact-section a:hover {
+  color: var(--accent-color);
+}
+
+/* -----------------------------
+  RESPONSIVE DESIGN
+----------------------------- */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+  }
+  .hero-section .hero-image {
+    margin-bottom: 1rem;
+  }
+}
