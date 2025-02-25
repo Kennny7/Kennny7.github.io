@@ -99,9 +99,10 @@ def main() -> None:
         title="Big Data & Machine Learning Enthusiast",
         personal_statement=(
             "Passionate and results-driven Computer Science graduate with strong expertise in advanced Python, SQL, "
-            "and Big Data technologies (Hadoop, PySpark, Kafka, Hive, HBase). Proven ability to develop innovative "
-            "solutions in computer vision, real-time analytics, and public safety, leveraging frameworks like Flask "
-            "and containerization with Docker to build scalable, high-performance applications."
+            "and Big Data technologies (Hadoop, PySpark, Kafka, Hive, HBase). Skilled in cloud technologies such as AWS "
+            "and Microsoft Azure, enabling seamless deployment and management of scalable solutions. Proven ability to develop "
+            "innovative solutions in computer vision, real-time analytics, and public safety, leveraging frameworks like Flask "
+            "and containerization with Docker to build high-performance applications."
         ),
         headshot_path="assets/headshot.png"  # Replace with your actual image path
     )
