@@ -1,4 +1,3 @@
-```markdown
 # My Portfolio Project
 
 A modern, visually appealing portfolio application built with Streamlit.
