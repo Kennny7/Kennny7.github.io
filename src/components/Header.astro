@@ -1,0 +1,75 @@
+---
+// Header.astro
+import { NAV_ITEMS } from '@utils/constants';
+import ContactButtons from './ContactButtons.astro';
+
+const currentPath = Astro.url?.pathname || '/';
+---
+
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo / Name -->
+      <a href="/" class="font-mono text-lg font-bold text-gradient">
+        KP/
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        {NAV_ITEMS.map(item => (
+          <a
+            href={item.href}
+            class={`font-mono text-sm transition-colors ${currentPath === item.href ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+          >
+            <span class="text-primary mr-1">[</span>
+            {item.label}
+            <span class="text-primary ml-1">]</span>
+          </a>
+        ))}
+      </nav>
+      
+      <!-- Contact Buttons (Desktop) -->
+      <div class="hidden md:block">
+        <ContactButtons variant="minimal" />
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-muted-foreground hover:text-foreground">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu (Hidden by default, toggled via JavaScript) -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl">
+    <nav class="flex flex-col p-4 space-y-4">
+      {NAV_ITEMS.map(item => (
+        <a
+          href={item.href}
+          class={`font-mono text-sm py-2 ${currentPath === item.href ? 'text-primary' : 'text-muted-foreground'}`}
+        >
+          <span class="text-primary mr-1">[</span>
+          {item.label}
+          <span class="text-primary ml-1">]</span>
+        </a>
+      ))}
+      <div class="pt-2 border-t border-border/40">
+        <ContactButtons variant="minimal" />
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

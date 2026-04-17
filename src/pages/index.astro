@@ -1,0 +1,112 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactButtons from '@components/ContactButtons.astro';
+import ProjectCard from '@components/ProjectCard.astro';
+import { SKILLS, IMPACT_STATS, EDUCATION } from '@utils/constants';
+import { getCollection } from 'astro:content';
+
+const featuredProjects = await getCollection('projects', ({ data }) => data.featured === true);
+---
+
+<BaseLayout>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    
+    <!-- Hero Section -->
+    <section class="mb-20">
+      <div class="flex flex-col items-center text-center">
+        <h1 class="text-4xl md:text-6xl font-mono font-bold mb-4">
+          <span class="text-primary">[</span>Khushal Pareta<span class="text-primary">]</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gradient font-mono mb-4">
+          MLOps Engineer
+        </p>
+        <p class="text-muted-foreground max-w-2xl mb-8">
+          Bridging data engineering, machine learning, and cloud infrastructure to build production‑ready, scalable AI systems.
+        </p>
+        <ContactButtons variant="default" />
+      </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="mb-20">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {IMPACT_STATS.map(stat => (
+          <div class="glass-card p-6 text-center">
+            <div class="text-3xl md:text-4xl font-mono font-bold text-primary mb-2">
+              {stat.value}
+            </div>
+            <div class="text-sm text-muted-foreground">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="mb-20">
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="glass-card overflow-hidden">
+        <div class="divide-y divide-border/30">
+          {SKILLS.map((domain, index) => (
+            <details class="group" open={index === 0}>
+              <summary class="p-4 cursor-pointer font-mono text-foreground hover:text-primary transition-colors list-none flex items-center justify-between">
+                <span>{domain.domain}</span>
+                <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </summary>
+              <div class="px-4 pb-4">
+                <div class="flex flex-wrap gap-2">
+                  {domain.skills.map(skill => (
+                    <span class="skill-badge">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="mb-20">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="section-title !mb-0">Featured Projects</h2>
+        <a href="/projects" class="font-mono text-sm text-primary hover:text-primary/80">
+          [View All]
+        </a>
+      </div>
+      
+      {featuredProjects.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredProjects.map(project => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      ) : (
+        <p class="text-muted-foreground text-center py-12">No featured projects yet.</p>
+      )}
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="glass-card divide-y divide-border/30">
+        {EDUCATION.map(edu => (
+          <div class="p-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-4 mb-2">
+              <h3 class="text-lg font-mono font-semibold">{edu.degree}</h3>
+              <span class="text-sm text-primary font-mono">{edu.year}</span>
+            </div>
+            <p class="text-muted-foreground">{edu.institution} • {edu.score}</p>
+            {edu.highlight && (
+              <p class="text-sm text-primary mt-2">[+] {edu.highlight}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
