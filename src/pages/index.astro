@@ -99,7 +99,12 @@ const featuredProjects = await getCollection('projects', ({ data }) => data.feat
               <h3 class="text-lg font-mono font-semibold">{edu.degree}</h3>
               <span class="text-sm text-primary font-mono">{edu.year}</span>
             </div>
-            <p class="text-muted-foreground">{edu.institution} • {edu.score}</p>
+
+            <p class="text-muted-foreground">
+              {edu.institution}
+              {edu.score && <> • {edu.score}</>}
+            </p>
+
             {edu.highlight && (
               <p class="text-sm text-primary mt-2">[+] {edu.highlight}</p>
             )}

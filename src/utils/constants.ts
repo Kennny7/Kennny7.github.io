@@ -59,14 +59,14 @@ export const EDUCATION = [
     degree: 'PG Diploma in Big Data Analytics',
     institution: 'C-DAC, Mumbai',
     year: '2024-2025',
-    score: '74.37%',
+    score: null,
     highlight: '1st Rank for Academic Excellence',
   },
   {
     degree: 'B.Tech in Computer Science',
     institution: 'Poornima College of Engineering, Jaipur',
     year: '2018-2022',
-    score: '70.70%',
+    score: null,
     highlight: null,
   },
 ];
