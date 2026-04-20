@@ -60,7 +60,7 @@ export const EDUCATION = [
     institution: 'C-DAC, Mumbai',
     year: '2024-2025',
     score: null,
-    highlight: '1st Rank for Academic Excellence',
+    highlight: 'Awarded 1st Rank for Academic Excellence',
   },
   {
     degree: 'B.Tech in Computer Science',
