@@ -17,7 +17,7 @@ if (showStats && fetchGithubData) {
 ---
 
 <div class="glass-card group overflow-hidden h-full flex flex-col transition-all duration-300 hover:scale-[1.02] hover:border-primary/30">
-  {image && (
+  {image ? (
     <div class="relative h-48 overflow-hidden">
       <img
         src={image}
@@ -25,6 +25,10 @@ if (showStats && fetchGithubData) {
         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+    </div>
+  ) : (
+    <div class="h-48 flex items-center justify-center text-xs text-red-500">
+      No image found
     </div>
   )}
   
