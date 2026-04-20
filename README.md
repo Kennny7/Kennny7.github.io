@@ -158,7 +158,7 @@ Projects are stored as **Markdown files** inside `src/content/projects/`. Each f
 ---
 title: "My Awesome Project"
 description: "A concise description of what this project does."
-image: "/images/projects/my-awesome.png"
+image: "/public/images/projects/my-awesome.png"
 github: "https://github.com/yourusername/your-repo"
 demo: "https://demo-link.com"          # optional
 tags: ["Python", "Spark", "AWS"]
