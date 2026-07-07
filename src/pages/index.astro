@@ -104,7 +104,8 @@ const renderedExperiences = await Promise.all(
     <!-- Experience Section -->
     <section class="mb-20">
       <h2 class="section-title">Experience</h2>
-      <div class="relative max-w-3xl mx-auto">
+      <!-- <div class="relative max-w-3xl mx-auto"> -->
+      <div class="relative">
         {renderedExperiences.map((exp) => (
           <ExperienceCard
             title={exp.data.title}
