@@ -1,5 +1,5 @@
 ---
-title: "Data Analyst"
+title: "Data Analyst (ELK Stack & Observability)"
 company: "Laxmi Traders"
 startDate: "July 2022"
 endDate: "August 2024"
