@@ -10,10 +10,25 @@ const projectsCollection = defineCollection({
     demo: z.string().url().optional(),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(true),
-    fetchGithubData: z.boolean().default(false), 
+    fetchGithubData: z.boolean().default(false),
+    order: z.number().default(0),
+  }),
+});
+
+const experienceCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    company: z.string(),
+    startDate: z.string(),
+    endDate: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    featured: z.boolean().default(true),
+    order: z.number().default(0),
   }),
 });
 
 export const collections = {
-  'projects': projectsCollection,
+  projects: projectsCollection,
+  experience: experienceCollection,
 };
