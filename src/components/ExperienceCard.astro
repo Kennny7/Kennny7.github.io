@@ -7,7 +7,7 @@ export interface Props {
   tags: string[];
   logo?: string;
   summary?: string;
-  Content: any; // Astro Markdown render result
+  Content: any; 
 }
 
 const {
@@ -54,9 +54,11 @@ const {
 
     <!-- Hidden full content -->
     <div class="exp-detail hidden mt-3">
-      <div class="text-muted-foreground leading-relaxed space-y-2 
-                  [&>ul]:list-disc [&>ul]:list-inside [&>ul]:space-y-1 
-                  [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:space-y-1
+      <div class="text-muted-foreground leading-relaxed
+                  [&>ul]:list-none [&>ul]:space-y-1.5
+                  [&>ul>li]:relative [&>ul>li]:pl-5
+                  [&>ul>li]:before:content-['–'] [&>ul>li]:before:absolute [&>ul>li]:before:left-0 [&>ul>li]:before:text-primary/60
+                  [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:space-y-1.5
                   [&>p]:mb-2
                   prose-a:text-primary">
         <Content />
