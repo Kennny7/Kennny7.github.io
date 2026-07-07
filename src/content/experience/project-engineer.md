@@ -1,6 +1,6 @@
 ---
 title: "Project Engineer (AI/ML & Data Pipelines)"
-company: "C-DAC, Juhu, Mumbai"
+company: "Centre for Development of Advanced Computing"
 startDate: "Mar 2025"
 endDate: "Present"
 tags: ["Python", "LangChain", "Docker", "PySpark", "MLflow", "PostgreSQL"]
