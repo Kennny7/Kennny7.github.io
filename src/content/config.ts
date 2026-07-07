@@ -25,6 +25,8 @@ const experienceCollection = defineCollection({
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(true),
     order: z.number().default(0),
+    logo: z.string().optional(),            
+    summary: z.string().optional(), 
   }),
 });
 
