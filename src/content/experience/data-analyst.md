@@ -1,6 +1,6 @@
 ---
-title: "Data Analyst"
-company: "Laxmi Traders"
+title: "Data Analyst (SQL & ELK)"
+company: "Laxmi Traders (Firm)"
 startDate: "Jul 2022"
 endDate: "Aug 2024"
 tags: ["Python", "SQL", "Power BI", "ETL", "PostgreSQL"]
