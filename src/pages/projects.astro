@@ -4,12 +4,18 @@ import ProjectCard from '@components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
 
 const allProjects = await getCollection('projects');
-// Sort by featured first, then by title
+
+// Sort by order ascending, then featured, then title
 const sortedProjects = allProjects.sort((a, b) => {
+  if (a.data.order !== b.data.order) return a.data.order - b.data.order;
   if (a.data.featured && !b.data.featured) return -1;
   if (!a.data.featured && b.data.featured) return 1;
   return a.data.title.localeCompare(b.data.title);
 });
+
+// Show first 4 projects initially; the rest are hidden inside an expandable panel
+const visibleProjects = sortedProjects.slice(0, 4);
+const hiddenProjects = sortedProjects.slice(4);
 ---
 
 <BaseLayout title="Projects | Khushal Pareta">
@@ -24,12 +30,46 @@ const sortedProjects = allProjects.sort((a, b) => {
       </p>
     </header>
 
+    <!-- Original grid (commented out – kept for reference)
     {sortedProjects.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sortedProjects.map(project => (
           <ProjectCard project={project} />
         ))}
       </div>
+    ) : (
+      <div class="glass-card p-12 text-center">
+        <p class="text-muted-foreground">No projects available yet. Check back soon!</p>
+      </div>
+    )}
+    -->
+
+    {sortedProjects.length > 0 ? (
+      <>
+        <!-- Visible projects (first 4) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visibleProjects.map(project => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+
+        <!-- Hidden projects (expandable) -->
+        {hiddenProjects.length > 0 && (
+          <details class="group mt-8">
+            <summary class="glass-card p-4 cursor-pointer font-mono text-foreground hover:text-primary transition-colors list-none flex items-center justify-center gap-2">
+              <span>Show all projects ({hiddenProjects.length} more)</span>
+              <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </summary>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+              {hiddenProjects.map(project => (
+                <ProjectCard project={project} />
+              ))}
+            </div>
+          </details>
+        )}
+      </>
     ) : (
       <div class="glass-card p-12 text-center">
         <p class="text-muted-foreground">No projects available yet. Check back soon!</p>
