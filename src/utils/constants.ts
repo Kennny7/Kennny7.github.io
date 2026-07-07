@@ -70,3 +70,6 @@ export const EDUCATION = [
     highlight: null,
   },
 ];
+
+// Path to downloadable resume file inside /public
+// export const RESUME_URL = '/files/khushal-pareta-resume.pdf';
