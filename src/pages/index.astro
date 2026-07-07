@@ -6,6 +6,17 @@ import { SKILLS, IMPACT_STATS, EDUCATION } from '@utils/constants';
 import { getCollection } from 'astro:content';
 
 const featuredProjects = await getCollection('projects', ({ data }) => data.featured === true);
+
+// Experience section: fetch and render all featured entries
+const experienceEntries = (await getCollection('experience', ({ data }) => data.featured === true))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const renderedExperiences = await Promise.all(
+  experienceEntries.map(async (entry) => {
+    const { Content } = await entry.render();
+    return { ...entry, Content };
+  })
+);
 ---
 
 <BaseLayout>
@@ -27,7 +38,26 @@ const featuredProjects = await getCollection('projects', ({ data }) => data.feat
       </div>
     </section>
 
-    <!-- Impact Stats -->
+    <!-- Resume Download Button -->
+    <section class="mb-20">
+      <div class="flex justify-center">
+        <a
+          href="/data/resume.pdf"
+          download
+          class="glass-card px-8 py-4 inline-flex items-center gap-3 font-mono text-lg text-primary hover:text-primary/80 hover:border-primary/30 transition-all"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Download Resume
+        </a>
+      </div>
+    </section>
+
+    <!-- (Commented out) Impact Stats - preserve for later use -->
+    <!--
     <section class="mb-20">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {IMPACT_STATS.map(stat => (
@@ -42,6 +72,7 @@ const featuredProjects = await getCollection('projects', ({ data }) => data.feat
         ))}
       </div>
     </section>
+    -->
 
     <!-- Skills Section -->
     <section class="mb-20">
@@ -65,6 +96,45 @@ const featuredProjects = await getCollection('projects', ({ data }) => data.feat
               </div>
             </details>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="mb-20">
+      <h2 class="section-title">Experience</h2>
+      <div class="glass-card overflow-hidden">
+        <div class="divide-y divide-border/30">
+          {renderedExperiences.map((exp, index) => (
+            <details class="group" open={index === 0}>
+              <summary class="p-4 cursor-pointer font-mono text-foreground hover:text-primary transition-colors list-none flex items-center justify-between">
+                <span>
+                  {exp.data.title} @ {exp.data.company}
+                  <span class="text-sm text-muted-foreground ml-4">
+                    {exp.data.startDate} – {exp.data.endDate || 'Present'}
+                  </span>
+                </span>
+                <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </summary>
+              <div class="px-4 pb-4">
+                <div class="prose prose-invert max-w-none text-muted-foreground">
+                  <exp.Content />
+                </div>
+                {exp.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-2 mt-3">
+                    {exp.data.tags.map(tag => (
+                      <span class="skill-badge">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </details>
+          ))}
+          {renderedExperiences.length === 0 && (
+            <p class="p-4 text-center text-muted-foreground">No experience entries yet.</p>
+          )}
         </div>
       </div>
     </section>
