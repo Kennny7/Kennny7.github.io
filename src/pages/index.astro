@@ -4,6 +4,7 @@ import ContactButtons from '@components/ContactButtons.astro';
 import ProjectCard from '@components/ProjectCard.astro';
 import { SKILLS, IMPACT_STATS, EDUCATION } from '@utils/constants';
 import { getCollection } from 'astro:content';
+import ExperienceCard from '@components/ExperienceCard.astro';
 
 const featuredProjects = await getCollection('projects', ({ data }) => data.featured === true);
 
@@ -103,43 +104,22 @@ const renderedExperiences = await Promise.all(
     <!-- Experience Section -->
     <section class="mb-20">
       <h2 class="section-title">Experience</h2>
-      <div class="glass-card overflow-hidden">
-        <div class="divide-y divide-border/30">
-          {renderedExperiences.map((exp, index) => (
-            <details class="group" open={false}>
-              <summary class="p-4 cursor-pointer font-mono text-foreground hover:text-primary transition-colors list-none flex items-center justify-between">
-                <span>
-                  {exp.data.title} @ {exp.data.company}
-                  <span class="text-sm text-muted-foreground ml-4">
-                    {exp.data.startDate} – {exp.data.endDate || 'Present'}
-                  </span>
-                </span>
-                <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M6 9l6 6 6-6"/>
-                </svg>
-              </summary>
-              <div class="px-6 pb-6">
-                <!-- Improved content styling for readability -->
-                <div class="text-muted-foreground leading-relaxed space-y-2 
-                            [&>ul]:list-disc [&>ul]:list-inside [&>ul]:space-y-1 
-                            [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:space-y-1
-                            [&>p]:mb-2">
-                  <exp.Content />
-                </div>
-                {exp.data.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-2 mt-4">
-                    {exp.data.tags.map(tag => (
-                      <span class="skill-badge">{tag}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </details>
-          ))}
-          {renderedExperiences.length === 0 && (
-            <p class="p-4 text-center text-muted-foreground">No experience entries yet.</p>
-          )}
-        </div>
+      <div class="relative max-w-3xl mx-auto">
+        {renderedExperiences.map((exp) => (
+          <ExperienceCard
+            title={exp.data.title}
+            company={exp.data.company}
+            startDate={exp.data.startDate}
+            endDate={exp.data.endDate}
+            tags={exp.data.tags}
+            logo={exp.data.logo}
+            summary={exp.data.summary}
+            Content={exp.Content}
+          />
+        ))}
+        {renderedExperiences.length === 0 && (
+          <p class="text-center text-muted-foreground py-12">No experience entries yet.</p>
+        )}
       </div>
     </section>
 
