@@ -277,24 +277,36 @@ kennny7.github.io/
 │   └── workflows/
 │       └── deploy.yml                 # GitHub Actions build & deploy pipeline
 ├── public/                            # Static assets (copied as‑is)
+│   ├── favicon.ico
 │   ├── favicon.svg
+│   ├── og-image.png
+│   ├── data
+│   │    └── resume.pdf              
 │   └── images/
 │       └── projects/                  # Store project screenshots here
 │           ├── aws-surveillance.png
 │           └── azure-crime.png
 ├── src/
+│   ├── assets/                        # icon and background
+│   │   ├── astro.svg
+│   │   └── background.svg
 │   ├── components/                    # Reusable Astro components
 │   │   ├── ContactButtons.astro
 │   │   ├── Footer.astro
 │   │   ├── Header.astro
+│   │   ├── Welcome.astro
 │   │   └── ProjectCard.astro
 │   ├── content/                       # Astro Content Collections
 │   │   ├── config.ts                  # Schema definition for projects
+│   │   ├── experience/                # Markdown files for each job
+│   │   │   ├── data-analyst.md
+│   │   │   └── project-engineer.md
 │   │   └── projects/                  # Markdown files for each project
 │   │       ├── aws-surveillance.md
 │   │       └── azure-crime.md
 │   ├── layouts/                       # Page layout wrappers
-│   │   └── BaseLayout.astro
+│   │   ├── BaseLayout.astro
+│   │   └── Layout.astro
 │   ├── pages/                         # File‑based routing
 │   │   ├── index.astro                # Homepage
 │   │   ├── projects.astro             # All projects gallery
@@ -417,5 +429,5 @@ This project is licensed under the **MIT License** — feel free to use, modify,
 ---
 
 <div align="center">
-  <sub>[+] Crafted with [ ] and [x] by Khushal Pareta | <a href="https://kennny7.github.io">View Live</a></sub>
+  <sub>[+] Crafted by Khushal Pareta | <a href="https://kennny7.github.io">View Live</a></sub>
 </div>
