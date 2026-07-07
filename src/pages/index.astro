@@ -80,7 +80,7 @@ const renderedExperiences = await Promise.all(
       <div class="glass-card overflow-hidden">
         <div class="divide-y divide-border/30">
           {SKILLS.map((domain, index) => (
-            <details class="group" open={index === 0}>
+            <details class="group" open={false}>
               <summary class="p-4 cursor-pointer font-mono text-foreground hover:text-primary transition-colors list-none flex items-center justify-between">
                 <span>{domain.domain}</span>
                 <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -106,7 +106,7 @@ const renderedExperiences = await Promise.all(
       <div class="glass-card overflow-hidden">
         <div class="divide-y divide-border/30">
           {renderedExperiences.map((exp, index) => (
-            <details class="group" open={index === 0}>
+            <details class="group" open={false}>
               <summary class="p-4 cursor-pointer font-mono text-foreground hover:text-primary transition-colors list-none flex items-center justify-between">
                 <span>
                   {exp.data.title} @ {exp.data.company}
