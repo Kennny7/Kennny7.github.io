@@ -118,12 +118,16 @@ const renderedExperiences = await Promise.all(
                   <path d="M6 9l6 6 6-6"/>
                 </svg>
               </summary>
-              <div class="px-4 pb-4">
-                <div class="prose prose-invert max-w-none text-muted-foreground">
+              <div class="px-6 pb-6">
+                <!-- Improved content styling for readability -->
+                <div class="text-muted-foreground leading-relaxed space-y-2 
+                            [&>ul]:list-disc [&>ul]:list-inside [&>ul]:space-y-1 
+                            [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:space-y-1
+                            [&>p]:mb-2">
                   <exp.Content />
                 </div>
                 {exp.data.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-2 mt-3">
+                  <div class="flex flex-wrap gap-2 mt-4">
                     {exp.data.tags.map(tag => (
                       <span class="skill-badge">{tag}</span>
                     ))}
