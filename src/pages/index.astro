@@ -12,9 +12,13 @@ import ExperienceCard from '@components/ExperienceCard.astro';
 // New: only the first 4 featured projects, sorted by their `order` field
 const allFeatured = await getCollection('projects', ({ data }) => data.featured === true);
 const featuredProjects = allFeatured
-  .sort((a, b) => a.data.order - b.data.order)
+  .sort((a, b) => {
+    if (a.data.order === 0 && b.data.order !== 0) return 1;   // 0 goes last
+    if (a.data.order !== 0 && b.data.order === 0) return -1;  // positive goes first
+    return a.data.order - b.data.order;                       // then numeric
+  })
   .slice(0, 4);
-  
+
 // Experience section: fetch and render all featured entries
 const experienceEntries = (await getCollection('experience', ({ data }) => data.featured === true))
   .sort((a, b) => a.data.order - b.data.order);
