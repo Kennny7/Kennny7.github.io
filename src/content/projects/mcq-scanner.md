@@ -1,6 +1,6 @@
 ---
 title: "MCQ Scanner: Flutter + FastAPI"
-order: 99
+order: 0
 description: "Mobile OCR-based MCQ scanner using Flutter frontend and FastAPI backend for real-time question extraction and automated answer retrieval."
 image: "/images/projects/mcq-scanner.png"
 github: "https://github.com/Kennny7/mcq_scanner_flutter_fastapi"
