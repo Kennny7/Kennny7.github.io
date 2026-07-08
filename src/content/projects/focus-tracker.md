@@ -1,5 +1,6 @@
 ---
 title: "Focus Tracker App"
+order: 3
 description: "Offline cross-platform focus timer built with Flutter featuring real-time focus monitoring, distraction detection, and automated punishment system."
 image: "/images/projects/focus-tracker.png"
 github: "https://github.com/Kennny7/focus_tracker_app"
