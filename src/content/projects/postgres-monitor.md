@@ -1,5 +1,6 @@
 ---
 title: "PostgreSQL Function Performance Monitor"
+order: 0
 description: "Modular monitoring system for PostgreSQL that safely executes functions in transactions, detects performance bottlenecks, and generates automated reports with email alerts."
 image: "/images/projects/postgres-monitor.png"
 github: "https://github.com/Kennny7/PostgreSQL-Function-Performance-Monitor"
