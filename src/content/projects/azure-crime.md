@@ -1,5 +1,6 @@
 ---
 title: "Azure Real-Time Crime Predictive Analytics"
+order: 2
 description: "Streaming analytics solution with Azure Event Hubs, Stream Analytics, deployed Scikit-learn model REST endpoint, and live Power BI dashboards."
 image: "/images/projects/azure-crime.png"
 github: "https://github.com/Kennny7/Azure-RealTime-Crime-Predictive-Analytics-System"
