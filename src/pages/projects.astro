@@ -30,7 +30,7 @@ const hiddenProjects = sortedProjects.slice(4);
       </p>
     </header>
 
-    <!-- Original grid (commented out – kept for reference)
+    <!-- Original grid (commented out – kept for reference) -->
     {sortedProjects.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sortedProjects.map(project => (
@@ -42,8 +42,12 @@ const hiddenProjects = sortedProjects.slice(4);
         <p class="text-muted-foreground">No projects available yet. Check back soon!</p>
       </div>
     )}
-    -->
 
+    {/* 
+      New grid with expandable hidden projects
+      - Show first 4 projects initially
+      - If there are more than 4, show a "Show all projects" button that expands to reveal the rest
+     
     {sortedProjects.length > 0 ? (
       <>
         <!-- Visible projects (first 4) -->
@@ -75,6 +79,8 @@ const hiddenProjects = sortedProjects.slice(4);
         <p class="text-muted-foreground">No projects available yet. Check back soon!</p>
       </div>
     )}
+
+    */}
 
   </main>
 </BaseLayout>
