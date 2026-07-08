@@ -6,8 +6,15 @@ import { SKILLS, IMPACT_STATS, EDUCATION } from '@utils/constants';
 import { getCollection } from 'astro:content';
 import ExperienceCard from '@components/ExperienceCard.astro';
 
-const featuredProjects = await getCollection('projects', ({ data }) => data.featured === true);
+// Old: all featured projects
+// const featuredProjects = await getCollection('projects', ({ data }) => data.featured === true);
 
+// New: only the first 4 featured projects, sorted by their `order` field
+const allFeatured = await getCollection('projects', ({ data }) => data.featured === true);
+const featuredProjects = allFeatured
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 4);
+  
 // Experience section: fetch and render all featured entries
 const experienceEntries = (await getCollection('experience', ({ data }) => data.featured === true))
   .sort((a, b) => a.data.order - b.data.order);
