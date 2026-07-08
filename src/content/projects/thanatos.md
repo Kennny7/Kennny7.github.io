@@ -1,5 +1,6 @@
 ---
 title: "Thanatos AI Orchestration Engine"
+order: 4
 description: "Modular agentic AI system for autonomous task execution using FastAPI, WebSockets, DeepSeek reasoning, plugin-based architecture, and vector memory."
 image: "/images/projects/thanatos.png"
 github: "https://github.com/Kennny7/Thanatos"
